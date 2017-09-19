@@ -1,0 +1,35 @@
+server:
+  port: 9002
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+    metadata-map:
+      user.name: ${security.user.name}
+      user.password: ${security.user.password}
+    ip-address: 127.0.0.1
+    instance-id: ${eureka.instance.ip-address}:${server.port}
+  client:
+    service-url:
+      defaultZone: http://admin:${REGISTRY_SERVER_PASSWORD:password}@localhost:9001/eureka/
+
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/CHERRISHGRY/docs
+          search-paths: spring/springcloud/config
+  rabbitmq:
+    host: 192.168.1.195
+    username: admin
+    password: admin
+  application:
+    name: service-config
+
+security:
+  user:
+    name: admin
+    password: ${CONFIG_SERVER_PASSWORD:password}
+logging:
+  config: classpath:logback.xml
