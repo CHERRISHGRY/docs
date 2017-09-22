@@ -41,4 +41,4 @@ security:
     resource:
       user-info-uri: http://${authserver.hostname}:${authserver.port}${authserver.contextPath}/current
       
-service-test: 12314145555555555555555555555555555555555555555
+service-test: 12316666666666666666666666666666666
